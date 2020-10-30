@@ -5,10 +5,13 @@
 
 int main() {
     srand(time(NULL));
-    struct thing *p;
-    p = new_thing(rand(), "toy");
+
+    struct chips *p;
+    p = new_chips(rand(), "Pringles");
+
     print_struct(*p);
-    change_thing(p, "other_toy", 20203.45);
+    change_chips(p, "Ruffles", 20203.45);
+
     print_struct(*p);
     free(p);
 }

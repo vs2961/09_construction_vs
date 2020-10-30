@@ -1,8 +1,8 @@
-struct thing {
+struct chips {
     float price;
-    char item[256];
+    char name[256];
 };
 
-void print_struct(struct thing x);
-struct thing *new_thing(float pr, char *it);
-void change_thing(struct thing *x, char *it, float pr);
+void print_struct(struct chips x);
+struct chips *new_chips(float pr, char *it);
+void change_chips(struct chips *x, char *it, float pr);

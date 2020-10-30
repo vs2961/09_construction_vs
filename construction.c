@@ -2,36 +2,40 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct thing {
+struct chips {
     float price;
-    char item[256];
+    char name[256];
+
+    struct chips *next;
 };
 
-void print_struct(struct thing x) {
-    printf("Your item is ");
-    for (int i = 0; *(x.item + i); i++) {
-        printf("%c", *(x.item + i));
+void print_struct(struct chips x) {
+    for (int i = 0; *(x.name + i); i++) {
+        printf("%c", *(x.name + i));
     }
-    printf("\n");
-    printf("Your item's price is %f\n", x.price);
+    printf(": %f\n", x.price);
     return;
 }
 
+struct chips *new_chips(float pr, char *it) {
 
-struct thing *new_thing(float pr, char *it) {
+    struct chips *nu;
 
-    struct thing *nu;
-
-    nu = malloc( sizeof(struct thing) );
-
-    strncpy(nu->item, it, sizeof(nu->item)-1);
+    nu = malloc( sizeof(struct chips) );
+    strncpy(nu->name, it, sizeof(nu->name)-1);
     nu->price = pr;
 
     return nu;
 }
 
-void change_thing(struct thing *x, char *it, float pr) {
+void change_chips(struct chips *x, char *it, float pr) {
     x -> price = pr;
-    strncpy(x->item, it, sizeof(x->item)-1);
+    strncpy(x->name, it, sizeof(x->name)-1);
+}    
+
+void free_chips(struct chips *x) {
+    free(x -> name);
+    free(x);
+    return;
 }
-    
+
